@@ -1,8 +1,6 @@
 package br.org.FelipeBert.screenmatch;
 
-import br.org.FelipeBert.screenmatch.model.DadosSerie;
-import br.org.FelipeBert.screenmatch.service.ConsumoApi;
-import br.org.FelipeBert.screenmatch.service.ConverterDados;
+import br.org.FelipeBert.screenmatch.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,13 +14,7 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoApi();
-		var json = consumoApi.obterDados("http://www.omdbapi.com/?i=tt3896198&apikey=key");
-
-		System.out.println(json);
-
-		ConverterDados conversor = new ConverterDados();
-		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+		Principal principal = new Principal();
+		principal.exibiMenu();
 	}
 }
